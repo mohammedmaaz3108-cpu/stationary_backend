@@ -1,4 +1,3 @@
-import { timestamp } from 'rxjs';
 import {
   AllowNull,
   AutoIncrement,
@@ -10,24 +9,30 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'family',
+  tableName: 'products',
   timestamps: true,
 })
-export class Family extends Model<Family> {
+export class Product extends Model<Product> {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
   declare id: number;
 
-  @AllowNull(false)
   @Column(DataType.STRING)
   declare name: string;
 
-  @AllowNull(false)
   @Column(DataType.STRING)
-  declare fatherName: string;
+  declare slug: string;
 
-  @AllowNull(false)
+  @Column(DataType.FLOAT)
+  declare price: number;
+
+  @Column(DataType.STRING)
+  declare image: string;
+
+  @Column(DataType.TEXT)
+  declare description: string;
+
   @Column(DataType.INTEGER)
-  declare age: number;
+  declare stock: number;
 }

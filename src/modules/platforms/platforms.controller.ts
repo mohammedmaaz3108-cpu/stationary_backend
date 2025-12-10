@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { PlatformsService } from './platforms.service';
 
 @Controller('platforms')
@@ -9,13 +9,17 @@ export class PlatformsController {
     return this.platformsService.getPlatforms();
   }
 
-  @Get('lists')
-  async getLists() {
-    return this.platformsService.getLists();
-  }
-
   @Post()
   async createPlatform(@Body() body: any) {
     return this.platformsService.createPlatform(body);
+  }
+  @Post('update')
+  async updatePlatform(@Body() body: any) {
+    return this.platformsService.updatePlatform(body);
+  }
+
+  @Delete(':id')
+  async deletePlatform(@Param('id') id: number) {
+    return this.platformsService.deletePlatform(id);
   }
 }

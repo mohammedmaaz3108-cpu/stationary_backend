@@ -24,4 +24,9 @@ export class Platform extends Model<Platform> {
     defaultValue: true,
   })
   is_active: boolean;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  edit: string;
 }
